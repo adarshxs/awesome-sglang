@@ -4,16 +4,15 @@ SGLang provides OpenAI-compatible APIs to enable a smooth transition from OpenAI
 
 This tutorial covers the following popular APIs:
 
-* <mark style="color:$info;">`chat/completions`</mark>
-* <mark style="color:$info;">`completions`</mark>
+* `chat/completions`
+* `completions`
 
 ## Usage
 
-The server fully implements the OpenAI API. It will automatically apply the chat template specified in the Hugging Face tokenizer, if one is available. You can also specify a custom chat template with <mark style="color:$info;">`--chat-template`</mark> when launching the server.
+The server fully implements the OpenAI API. It will automatically apply the chat template specified in the Hugging Face tokenizer, if one is available. You can also specify a custom chat template with `--chat-template` when launching the server.
 
-```python
-import openai
-
+<pre class="language-python"><code class="lang-python"><strong>import openai
+</strong>
 client = openai.Client(base_url=f"http://127.0.0.1:{port}/v1", api_key="None")
 
 response = client.chat.completions.create(
@@ -26,7 +25,7 @@ response = client.chat.completions.create(
 )
 
 print_highlight(f"Response: {response}")
-```
+</code></pre>
 
 ## Model Thinking/Reasoning Support
 
@@ -34,24 +33,24 @@ Some models support internal reasoning or thinking processes that can be exposed
 
 ### **Supported Models and Configuration**
 
-| Model Family                          | Chat Template Parameter                             | Reasoning Parser                                                      | Notes                                      |
-| ------------------------------------- | --------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------ |
-| DeepSeek-R1 (R1, R1-0528, R1-Distill) | <mark style="color:$info;">`enable_thinking`</mark> | <mark style="color:$info;">`--reasoning-parser deepseek-r1`</mark>    | Standard reasoning models                  |
-| DeepSeek-V3.1                         | <mark style="color:$info;">`thinking`</mark>        | <mark style="color:$info;">`--reasoning-parser deepseek-v3`</mark>    | Hybrid model (thinking/non-thinking modes) |
-| Qwen3 (standard)                      | <mark style="color:$info;">`enable_thinking`</mark> | <mark style="color:$info;">`--reasoning-parser qwen3`</mark>          | Hybrid model (thinking/non-thinking modes) |
-| Qwen3-Thinking                        | N/A (always enabled)                                | <mark style="color:$info;">`--reasoning-parser qwen3-thinking`</mark> | Always generates reasoning                 |
-| Kimi                                  | N/A (always enabled)                                | <mark style="color:$info;">`--reasoning-parser kimi`</mark>           | Kimi thinking models                       |
-| Gpt-Oss                               | N/A (always enabled)                                | <mark style="color:$info;">`--reasoning-parser gpt-oss`</mark>        | Gpt-Oss thinking models                    |
+| Model Family                          | Chat Template Parameter | Reasoning Parser                    | Notes                                      |
+| ------------------------------------- | ----------------------- | ----------------------------------- | ------------------------------------------ |
+| DeepSeek-R1 (R1, R1-0528, R1-Distill) | `enable_thinking`       | `--reasoning-parser deepseek-r1`    | Standard reasoning models                  |
+| DeepSeek-V3.1                         | `thinking`              | `--reasoning-parser deepseek-v3`    | Hybrid model (thinking/non-thinking modes) |
+| Qwen3 (standard)                      | `enable_thinking`       | `--reasoning-parser qwen3`          | Hybrid model (thinking/non-thinking modes) |
+| Qwen3-Thinking                        | N/A (always enabled)    | `--reasoning-parser qwen3-thinking` | Always generates reasoning                 |
+| Kimi                                  | N/A (always enabled)    | `--reasoning-parser kimi`           | Kimi thinking models                       |
+| Gpt-Oss                               | N/A (always enabled)    | `--reasoning-parser gpt-oss`        | Gpt-Oss thinking models                    |
 
 ### **Basic Usage**
 
 To enable reasoning output, you need to:
 
 1. Launch the server with the appropriate reasoning parser
-2. Set the model-specific parameter in <mark style="color:$info;">`chat_template_kwargs`</mark>
-3. Optionally use <mark style="color:$info;">`separate_reasoning: False`</mark> to not get reasoning content separately (default to <mark style="color:$info;">`True`</mark>)
+2. Set the model-specific parameter in `chat_template_kwargs`
+3. Optionally use `separate_reasoning: False` to not get reasoning content separately (default to `True`)
 
-**Note for Qwen3-Thinking models:** These models always generate thinking content and do not support the <mark style="color:$info;">`enable_thinking`</mark> parameter. Use <mark style="color:$info;">`--reasoning-parser qwen3-thinking`</mark> or <mark style="color:$info;">`--reasoning-parser qwen3`</mark> to parse the thinking content.
+**Note for Qwen3-Thinking models:** These models always generate thinking content and do not support the `enable_thinking` parameter. Use `--reasoning-parser qwen3-thinking` or `--reasoning-parser qwen3` to parse the thinking content.
 
 #### **Example: Qwen3 Models**
 
@@ -104,11 +103,11 @@ Thus, the total count is **3**.
 **Answer:** 3.
 ```
 
-**Note:** Setting <mark style="color:$info;">`"enable_thinking": False`</mark> (or omitting it) will result in <mark style="color:$info;">`reasoning_content`</mark> being <mark style="color:$info;">`None`</mark>. Qwen3-Thinking models always generate reasoning content and don’t support the <mark style="color:$info;">`enable_thinking`</mark> parameter.
+**Note:** Setting `"enable_thinking": False` (or omitting it) will result in `reasoning_content` being `None`. Qwen3-Thinking models always generate reasoning content and don’t support the `enable_thinking` parameter.
 
 #### **Example: DeepSeek-V3 Models**
 
-DeepSeek-V3 models support thinking mode through the <mark style="color:$info;">`thinking`</mark> parameter:
+DeepSeek-V3 models support thinking mode through the `thinking` parameter:
 
 ```python
 # Launch server:
@@ -213,7 +212,7 @@ for chunk in stream:
 
 ### Usage
 
-Completions API is similar to Chat Completions API, but without the <mark style="color:$info;">`messages`</mark> parameter or chat templates.
+Completions API is similar to Chat Completions API, but without the `messages` parameter or chat templates.
 
 ```python
 response = client.completions.create(
@@ -255,4 +254,4 @@ print_highlight(f"Response: {response}")
 
 For OpenAI compatible structured outputs API, refer to [Structured Outputs](https://docs.sglang.ai/advanced_features/structured_outputs.html) for more details.
 
-\
+\\
