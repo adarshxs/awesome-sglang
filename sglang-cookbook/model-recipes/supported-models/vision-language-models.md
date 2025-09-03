@@ -1,4 +1,4 @@
-# Multimodal Language Models
+# Vision Language Models
 
 These models accept multi-modal inputs (e.g., images and text) and generate text output. They augment language models with multimodal encoders.
 
