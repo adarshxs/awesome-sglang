@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Welcome](README.md)
+* [Supported Models](README.md)
 
 ## Getting Started
 
