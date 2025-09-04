@@ -4,7 +4,8 @@
 
 ## Getting Started
 
-* [Quickstart](getting-started/quickstart.md)
+* [Language Models](getting-started/quickstart/README.md)
+  * [Deepseek](getting-started/quickstart/deepseek.md)
 * [Publish your docs](getting-started/publish-your-docs.md)
 
 ## Basics
