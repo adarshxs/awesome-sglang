@@ -4,8 +4,9 @@
 
 ## Getting Started
 
-* [Language Models](getting-started/quickstart/README.md)
-  * [Deepseek](getting-started/quickstart/deepseek.md)
+* [Language Models](getting-started/language-models/README.md)
+  * [Deepseek](getting-started/language-models/deepseek.md)
+  * [Qwen](getting-started/language-models/qwen.md)
 * [Publish your docs](getting-started/publish-your-docs.md)
 
 ## Basics
